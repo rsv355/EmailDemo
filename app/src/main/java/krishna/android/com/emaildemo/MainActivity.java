@@ -163,8 +163,7 @@ private Button btn,btn2;
 
 
         Multipart multipart = new MimeMultipart();
-//
-//
+
           MimeBodyPart messageBodyPart = new MimeBodyPart();
           DataSource source = new FileDataSource(new File(imgPath.getAbsolutePath()));
          messageBodyPart.setDataHandler(new DataHandler(source));
@@ -172,10 +171,9 @@ private Button btn,btn2;
           messageBodyPart.setDisposition(MimeBodyPart.ATTACHMENT);
           messageBodyPart.setHeader("Content-ID", "<vogue>");
           multipart.addBodyPart(messageBodyPart);
-//
+
          message.setContent(multipart);
 
-//        Transport.send(message);
 
         return message;
     }
@@ -208,6 +206,7 @@ private Button btn,btn2;
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             progressDialog.dismiss();
+            Toast.makeText(MainActivity.this,"Mail Sent",Toast.LENGTH_LONG).show();
         }
 
         @Override
