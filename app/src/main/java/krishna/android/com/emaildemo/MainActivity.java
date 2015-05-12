@@ -162,17 +162,49 @@ private Button btn,btn2;
         message.setText(messageBody);
 
 
+
+        // for sending single attachments
+
         Multipart multipart = new MimeMultipart();
 
           MimeBodyPart messageBodyPart = new MimeBodyPart();
           DataSource source = new FileDataSource(new File(imgPath.getAbsolutePath()));
-         messageBodyPart.setDataHandler(new DataHandler(source));
+          messageBodyPart.setDataHandler(new DataHandler(source));
           messageBodyPart.setFileName("helpme.jpg");
           messageBodyPart.setDisposition(MimeBodyPart.ATTACHMENT);
           messageBodyPart.setHeader("Content-ID", "<vogue>");
           multipart.addBodyPart(messageBodyPart);
 
          message.setContent(multipart);
+
+
+
+       // for sending multiple attachments
+
+      /*  Multipart multipart = new MimeMultipart("mixed");
+
+            MimeBodyPart messageBodyPart = new MimeBodyPart();
+            DataSource source = new FileDataSource(new File(imgPath.getAbsolutePath()));
+            messageBodyPart.setDataHandler(new DataHandler(source));
+            messageBodyPart.setFileName("Img1.jpg");
+            multipart.addBodyPart(messageBodyPart);
+
+        MimeBodyPart messageBodyPart2 = new MimeBodyPart();
+        DataSource source2 = new FileDataSource(new File(imgPath.getAbsolutePath()));
+        messageBodyPart2.setDataHandler(new DataHandler(source2));
+        messageBodyPart2.setFileName("Img2.jpg");
+        multipart.addBodyPart(messageBodyPart2);
+
+        message.setContent(multipart);*/
+
+
+
+
+
+
+
+
+
 
 
         return message;
